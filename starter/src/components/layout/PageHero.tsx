@@ -1,0 +1,77 @@
+import type { ReactNode } from "react";
+
+import { LogoMark } from "@/components/brand/LogoMark";
+import { Container } from "@/components/ui/Container";
+import { cn } from "@/lib/utils";
+
+type PageHeroProps = {
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  children?: ReactNode;
+  /** Shows the cube mark as a large watermark behind the copy. */
+  watermark?: boolean;
+  align?: "left" | "center";
+  className?: string;
+};
+
+/** Shared masthead for every inner page, sitting under the fixed header. */
+export function PageHero({
+  eyebrow,
+  title,
+  body,
+  children,
+  watermark = true,
+  align = "left",
+  className,
+}: PageHeroProps) {
+  return (
+    <section
+      className={cn(
+        "iso-grid relative overflow-hidden border-b border-line bg-linear-to-b from-navy-deep to-transparent light:from-brand-pale pb-16 pt-36 sm:pb-20 sm:pt-44",
+        className,
+      )}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 -top-40 size-[28rem] rounded-full border-[60px] border-brand/15"
+      />
+
+      {watermark ? (
+        <LogoMark
+          aria-hidden
+          className="pointer-events-none absolute -right-16 top-20 h-96 w-auto opacity-[4%] sm:-right-4"
+        />
+      ) : null}
+
+      <Container width="wide" className={cn("relative", align === "center" && "text-center")}>
+        {eyebrow ? (
+          <span className="font-display text-sm font-extrabold uppercase tracking-[0.16em] text-brand-bright">
+            {eyebrow}
+          </span>
+        ) : null}
+
+        <h1 className={cn("mt-4 text-4xl sm:text-6xl", align === "center" && "mx-auto max-w-3xl")}>
+          {title}
+        </h1>
+
+        {body ? (
+          <p
+            className={cn(
+              "mt-6 max-w-2xl font-body text-base leading-relaxed text-muted",
+              align === "center" && "mx-auto",
+            )}
+          >
+            {body}
+          </p>
+        ) : null}
+
+        {children ? (
+          <div className={cn("mt-9 flex flex-wrap gap-3", align === "center" && "justify-center")}>
+            {children}
+          </div>
+        ) : null}
+      </Container>
+    </section>
+  );
+}

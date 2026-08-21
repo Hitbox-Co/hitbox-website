@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens.
+
+   The visual system is modelled on the SEGA publisher site: deep navy
+   surfaces, an electric blue brand accent, a tight uppercase display
+   face and a soft geometric body face. Content, flows and navigation
+   are HitBox's own.
+
+   Every colour below is a real CSS variable, so the light theme further
+   down only has to restate the ones that flip. Semantics:
+
+     ink / ink-soft / ink-raised  page and card surfaces
+     fg                           strongest text, and solid text-coloured fills
+     paper                        body text
+     muted                        secondary text
+     line / line-strong           hairlines
+     navy / navy-deep / brand*    brand surfaces — these stay dark in BOTH
+                                  themes, so anything sitting on them (the
+                                  hero art, the CTA band, the boot splash)
+                                  keeps literal white text.
+------------------------------------------------------------------- */
+@theme {
+  --color-ink: #0d1126;
+  --color-ink-soft: #151b3a;
+  --color-ink-raised: #1b2246;
+  --color-navy: #002366;
+  --color-navy-deep: #001845;
+  --color-brand: #0057ff;
+  --color-brand-bright: #007aff;
+  --color-brand-pale: #e1eaff;
+  --color-paper: #f4f6f9;
+  --color-muted: #c3c5d5;
+  --color-subtle: #9ea4bd;
+  --color-fg: #ffffff;
+  /* Never restated by the light theme: art and brand surfaces stay dark. */
+  --color-scrim: #0d1126;
+  --color-brand-flat: #0057ff;
+
+  --color-line: rgba(255, 255, 255, 0.12);
+  --color-line-strong: rgba(255, 255, 255, 0.24);
+
+  --font-display: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
+  --font-body: var(--font-poppins), Poppins, system-ui, sans-serif;
+
+  --radius-card: 12px;
+  --radius-tile: 8px;
+  --radius-input: 6px;
+
+  --shadow-tile: 0 18px 40px -18px rgba(0, 12, 40, 0.75);
+  --shadow-lift: 0 26px 60px -22px rgba(0, 87, 255, 0.55);
+}
+
+/* Daylight counterpart: cool paper-white surfaces, ink-navy type, and a
+   slightly deeper brand blue so it still clears AA on white. */
+@layer theme {
+  :root[data-theme="light"] {
+    --color-ink: #eef1f7;
+    --color-ink-soft: #ffffff;
+    --color-ink-raised: #e3e8f2;
+    --color-brand: #0047db;
+    --color-brand-bright: #0057ff;
+    --color-brand-pale: #dbe6ff;
+    --color-paper: #0c1226;
+    --color-muted: #4c5470;
+    --color-subtle: #565d78;
+    --color-fg: #060b1a;
+
+    --color-line: rgba(9, 16, 40, 0.13);
+    --color-line-strong: rgba(9, 16, 40, 0.24);
+
+    --shadow-tile: 0 18px 40px -20px rgba(9, 16, 40, 0.22);
+    --shadow-lift: 0 24px 50px -22px rgba(0, 71, 219, 0.4);
+  }
+}
+
+/* `light:` targets the daylight theme, for the few places that need a
+   different treatment rather than a different colour. */
+@custom-variant light (&:where([data-theme="light"] *));
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  /* Repaint of surfaces and type when the theme flips. */
+  body {
+    transition:
+      background-color 250ms ease,
+      color 250ms ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  select,
+  option {
+    background-color: var(--color-ink-soft);
+    color: var(--color-paper);
+  }
+}
+
+@layer utilities {
+  /* Horizontal rails used by the card carousels */
+  .scroll-rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scroll-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Faint isometric grid, echoing the cube in the HitBox mark */
+  .iso-grid {
+    background-image:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(65deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+  :root[data-theme="light"] .iso-grid {
+    background-image:
+      linear-gradient(115deg, rgba(9, 16, 40, 0.05) 1px, transparent 1px),
+      linear-gradient(65deg, rgba(9, 16, 40, 0.05) 1px, transparent 1px);
+  }
+
+  /* Halftone dots — the print-poster texture behind the hero key art */
+  .halftone {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1.4px, transparent 1.5px);
+    background-size: 9px 9px;
+  }
+
+  /* Coarse diagonal hatch, layered over the halftone for depth */
+  .poster-hatch {
+    background-image: repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.07) 0 2px,
+      transparent 2px 14px
+    );
+  }
+
+  /* Hollow display type — the oversized outlined section titles */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-brand-bright);
+  }
+  @media (min-width: 640px) {
+    .text-outline {
+      -webkit-text-stroke-width: 3px;
+    }
+  }
+
+  /* Vertical connector between numbered steps */
+  .step-line::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 3.5rem;
+    bottom: -2.5rem;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-brand), transparent);
+  }
+}
