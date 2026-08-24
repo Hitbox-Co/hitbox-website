@@ -1,12 +1,15 @@
 {
-  "name": "sega-style-web",
+  "name": "hitbox-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "logo": "node scripts/build-logo.mjs"
   },
   "dependencies": {
