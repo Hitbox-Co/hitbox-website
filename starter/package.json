@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": ">=20 <25"
   },
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,7 @@
     "logo": "node scripts/build-logo.mjs"
   },
   "dependencies": {
-    "next": "15.5.4",
+    "next": "15.5.23",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
@@ -24,5 +24,9 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9"
+  },
+  "overrides": {
+    "sharp": "^0.35.3",
+    "postcss": "^8.5.26"
   }
 }
