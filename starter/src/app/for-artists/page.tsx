@@ -62,7 +62,7 @@ export default function ForArtistsPage() {
         />
       </Section>
 
-      <FaqPreview title="Artist & creator questions" items={artistFaq} />
+      {/* <FaqPreview title="Artist & creator questions" items={artistFaq} /> */}
 
       <CtaSection
         title="Start a conversation"
