@@ -37,7 +37,7 @@ export function MobileNav() {
         onClick={() => setOpen(true)}
         aria-label="Open menu"
         aria-expanded={open}
-        className="grid size-10 place-items-center rounded-[4px] text-fg transition-colors hover:bg-fg/10 xl:hidden"
+        className="grid size-10 place-items-center rounded-[4px] text-fg transition-colors hover:bg-fg/10 lg:hidden"
       >
         <MenuIcon className="size-6" />
       </button>
@@ -47,7 +47,7 @@ export function MobileNav() {
         aria-modal="true"
         aria-label="Site menu"
         className={cn(
-          "fixed inset-0 z-100 flex flex-col bg-ink transition-opacity duration-200 xl:hidden",
+          "fixed inset-0 z-100 flex flex-col bg-ink transition-opacity duration-200 lg:hidden",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >

@@ -37,14 +37,14 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Button
-              href={headerActions.secondary.href}
-              variant="brandOutline"
-              size="sm"
-              className="hidden sm:inline-flex"
-            >
-              {headerActions.secondary.label}
-            </Button>
+            {/* The wrapper carries the breakpoint, not the Button: Button's
+                own `inline-flex` and a `hidden` class are both display
+                utilities, and `inline-flex` wins, so the button never hid. */}
+            <span className="hidden sm:inline-flex">
+              <Button href={headerActions.secondary.href} variant="brandOutline" size="sm">
+                {headerActions.secondary.label}
+              </Button>
+            </span>
             <Button href={headerActions.primary.href} size="sm">
               {headerActions.primary.label}
             </Button>
@@ -54,7 +54,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "hidden border-t border-line/60 xl:block",
+          "hidden border-t border-line/60 lg:block",
           scrolled ? "bg-ink/60" : "bg-ink/30",
         )}
       >
