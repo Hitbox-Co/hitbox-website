@@ -122,10 +122,10 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href={slide.primary.href} size="lg" shape="slant">
+              <Button href={slide.primary.href} size="lg">
                 {slide.primary.label}
               </Button>
-              <Button href={slide.secondary.href} variant="onArt" size="lg" shape="slant">
+              <Button href={slide.secondary.href} variant="onArt" size="lg">
                 {slide.secondary.label}
               </Button>
             </div>

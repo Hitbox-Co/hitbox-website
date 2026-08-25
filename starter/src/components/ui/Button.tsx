@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export type ButtonVariant = "primary" | "secondary" | "onArt" | "light" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
-/** `slant` is the parallelogram key-art button used by the hero. */
+/** `slant` is the parallelogram house style and the default; `square` is the opt-out. */
 export type ButtonShape = "square" | "slant";
 
 const base =
@@ -52,7 +52,7 @@ export function Button(props: AsLink | AsButton) {
     children,
     variant = "primary",
     size = "md",
-    shape = "square",
+    shape = "slant",
     className,
     ...rest
   } = props as AsButton & { href?: string };
