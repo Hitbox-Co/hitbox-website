@@ -8,7 +8,6 @@ export const primaryNav: NavLink[] = [
   { label: "Collectors", href: "/for-collectors" },
   { label: "Artists & Creators", href: "/for-artists" },
   { label: "About", href: "/about" },
-  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
