@@ -54,7 +54,7 @@ export default function HowItWorksPage() {
           {collectionTypes.map((type) => (
             <Card key={type} className="flex items-center gap-3 py-5">
               <CheckIcon aria-hidden className="size-4 shrink-0 text-fg" />
-              <span className="font-display text-[15px] font-medium">{type}</span>
+              <span className="font-display text-[15px] font-semibold">{type}</span>
             </Card>
           ))}
         </div>
@@ -83,7 +83,7 @@ export default function HowItWorksPage() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {experienceTypes.map((type) => (
             <Card key={type} className="py-5">
-              <span className="font-display text-[15px] font-medium">{type}</span>
+              <span className="font-display text-[15px] font-semibold">{type}</span>
             </Card>
           ))}
         </div>
