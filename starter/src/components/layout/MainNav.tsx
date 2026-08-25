@@ -24,13 +24,13 @@ export function MainNav() {
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "relative block px-4 py-3.5 font-display text-sm font-extrabold uppercase tracking-[0.06em] transition-colors",
-                  active ? "text-fg" : "text-fg/70 hover:text-fg",
+                  active ? "text-fg light:text-brand" : "text-fg/70 hover:text-fg",
                 )}
               >
                 {item.label}
                 <span
                   className={cn(
-                    "absolute inset-x-3 bottom-1.5 h-0.5 origin-left bg-brand-bright transition-transform duration-200",
+                    "absolute inset-x-3 bottom-1.5 h-0.5 origin-left bg-brand-bright light:bg-fg transition-transform duration-200",
                     active ? "scale-x-100" : "scale-x-0",
                   )}
                 />

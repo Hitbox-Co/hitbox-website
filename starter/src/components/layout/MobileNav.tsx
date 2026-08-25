@@ -75,11 +75,17 @@ export function MobileNav() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "block py-3 font-display text-2xl font-extrabold uppercase transition-colors",
-                      active ? "text-brand-bright" : "text-fg/90 hover:text-brand-bright",
+                      "relative block w-fit py-3 font-display text-2xl font-extrabold uppercase transition-colors",
+                      active ? "text-fg light:text-brand" : "text-fg/70 hover:text-fg",
                     )}
                   >
                     {item.label}
+                    <span
+                      className={cn(
+                        "absolute inset-x-0 bottom-1.5 h-0.5 origin-left bg-brand-bright light:bg-fg transition-transform duration-200",
+                        active ? "scale-x-100" : "scale-x-0",
+                      )}
+                    />
                   </Link>
                 </li>
               );
