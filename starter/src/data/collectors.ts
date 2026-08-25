@@ -34,43 +34,47 @@ export const collectionJourney: Step[] = [
 ];
 
 /**
- * Placeholder entries for the account preview. These describe the interface,
- * not real releases — no artist, product or partner names appear anywhere.
+ * Sample entries for the account preview.
+ *
+ * These are mock rows, not real releases — the surrounding card is labelled
+ * "Interface preview — not a live account" so nothing here reads as a live
+ * holding. Names, dates and edition numbers are illustrative.
  */
 export const previewCollectibles: CollectiblePlaceholder[] = [
   {
-    id: "slot-1",
-    name: "Collectible name",
+    id: "mono-jersey",
+    name: "Mono Jersey",
     image: {
-      src: "/worlds/bix-all-stars.jpg",
-      alt: "HitBox key art: the Bix All Stars first anniversary poster.",
+      src: "/collection/jersey-mono.jpg",
+      alt: "HitBox Collectibles jersey in black and white, lit against a blue backdrop.",
     },
-    collection: "Artist collection",
-    claimDate: "Claim date",
-    edition: "Edition number",
+    collection: "Brand collection",
+    claimDate: "02 February 2026",
+    edition: "Open edition",
     status: "Claimed",
   },
   {
-    id: "slot-2",
-    name: "Collectible name",
+    id: "bix-all-rounder",
+    name: "Bix All-Rounder",
     image: {
-      src: "/worlds/bix-stadium.jpg",
-      alt: "HitBox key art: Bix in a football kit in a floodlit stadium.",
+      src: "/collection/bix-cricket-figure.jpg",
+      alt: "Bix collectible figure in cricket whites and helmet, holding a bat on a lit display podium.",
     },
-    collection: "Tour collection",
-    claimDate: "Claim date",
+    collection: "Sports collection",
+    claimDate: "14 March 2026",
+    edition: "042 / 500",
     status: "Claimed",
   },
   {
-    id: "slot-3",
-    name: "Collectible name",
+    id: "azure-jersey",
+    name: "Azure Jersey",
     image: {
-      src: "/worlds/bix-bubble-rumble.jpg",
-      alt: "HitBox key art: Bix Bubble Rumble.",
+      src: "/collection/jersey-azure.png",
+      alt: "HitBox Collectibles jersey in blue and white, lit against a blue backdrop.",
     },
     collection: "Limited edition collection",
-    claimDate: "Claim date",
-    edition: "Edition number",
+    claimDate: "28 January 2026",
+    edition: "117 / 250",
     status: "Claimed",
   },
 ];
