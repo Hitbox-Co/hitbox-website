@@ -13,7 +13,7 @@ export function SiteFooter() {
     <footer className="border-t border-line bg-navy-deep light:bg-ink-soft">
       <Container width="wide" className="py-16">
         {/* Waitlist capture, styled as the footer's brand panel */}
-        <div className="overflow-hidden rounded-card bg-linear-to-br from-brand to-navy-deep p-8 text-white sm:p-10">
+        {/* <div className="overflow-hidden rounded-card bg-linear-to-br from-brand to-navy-deep p-8 text-white sm:p-10">
           <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <div>
               <h2 className="text-2xl sm:text-4xl">Join the HitBox waitlist</h2>
@@ -25,7 +25,7 @@ export function SiteFooter() {
 
             <WaitlistForm compact variant="onBrand" />
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-14 grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
           <div>
