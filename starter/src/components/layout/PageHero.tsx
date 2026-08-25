@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 type PageHeroProps = {
   eyebrow?: string;
   title: string;
+  /** Trailing phrase rendered in brand blue, e.g. "Artists & Creators". */
+  highlight?: string;
   body?: string;
   children?: ReactNode;
   /** Shows the cube mark as a large watermark behind the copy. */
@@ -19,6 +21,7 @@ type PageHeroProps = {
 export function PageHero({
   eyebrow,
   title,
+  highlight,
   body,
   children,
   watermark = true,
@@ -51,8 +54,9 @@ export function PageHero({
           </span>
         ) : null}
 
-        <h1 className={cn("mt-4 text-4xl sm:text-6xl", align === "center" && "mx-auto max-w-3xl")}>
+        <h1 className={cn("mt-4 text-4xl sm:text-6xl", align === "center" && "mx-auto max-w-4xl")}>
           {title}
+          {highlight ? <> <span className="text-brand-bright">{highlight}</span></> : null}
         </h1>
 
         {body ? (

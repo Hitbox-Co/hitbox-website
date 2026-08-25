@@ -5,10 +5,13 @@ import { PageHero } from "@/components/layout/PageHero";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
+import { PosterFan } from "@/components/sections/PosterFan";
 import { StepFlow } from "@/components/sections/StepFlow";
+import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { artistFaq, partnershipProcess, whyPartner } from "@/data/artists";
+import { artistMerch } from "@/data/merch";
 
 export const metadata: Metadata = {
   title: "For Artists & Creators",
@@ -20,10 +23,20 @@ export default function ForArtistsPage() {
   return (
     <>
       <PageHero
+        align="center"
         eyebrow="For artists & creators"
-        title="Built for artists & creators"
+        title="Built for"
+        highlight="Artists & Creators"
         body="HitBox allows artists and creators to connect digital experiences to physical collectibles, creating new ways for collectors to engage with each release."
-      />
+      >
+        <Button href="/join-waitlist" size="lg">
+          Join Waitlist
+        </Button>
+      </PageHero>
+
+      <Section className="pt-0">
+        <PosterFan items={artistMerch} priority />
+      </Section>
 
       <Section>
         <SectionHeading
