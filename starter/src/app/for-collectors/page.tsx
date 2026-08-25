@@ -4,7 +4,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { CollectionPreview } from "@/components/sections/CollectionPreview";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
-import { StepFlow } from "@/components/sections/StepFlow";
+import { StepCarousel } from "@/components/sections/StepCarousel";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { collectionJourney, previewCollectibles, whyJoin } from "@/data/collectors";
@@ -34,22 +34,27 @@ export default function ForCollectorsPage() {
       </Section>
 
       <Section bordered tone="raised">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <SectionHeading
-            eyebrow="The journey"
-            title="From collectible to collection"
-            body="Each collectible follows the same path, and stays in your account once it arrives there."
-          />
+        <SectionHeading
+          align="center"
+          eyebrow="The journey"
+          title="From collectible to"
+          highlight="collection"
+          body="Each collectible follows the same path, and stays in your account once it arrives there."
+        />
 
-          <StepFlow steps={collectionJourney} variant="chain" />
-        </div>
+        <StepCarousel
+          steps={collectionJourney}
+          label="Collection journey"
+          className="mt-14"
+        />
       </Section>
 
-      <Section bordered>
+      <Section tone="brand">
         <SectionHeading
           eyebrow="Account preview"
           title="Your HitBox collection"
           body="A preview of how claimed collectibles appear inside a HitBox account. The entries below show the interface only — artwork and release details arrive with the first collectibles."
+          tone="onBrand"
         />
         <CollectionPreview items={previewCollectibles} className="mt-12" />
       </Section>

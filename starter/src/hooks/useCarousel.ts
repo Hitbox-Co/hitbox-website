@@ -22,8 +22,15 @@ export function useCarousel({ length, interval = 7000 }: Options) {
     (next: number) => setIndex(((next % length) + length) % length),
     [length],
   );
-  const next = useCallback(() => goTo(index + 1), [goTo, index]);
-  const previous = useCallback(() => goTo(index - 1), [goTo, index]);
+  // Functional updates rather than reading `index` from the closure: two
+  // clicks landing in the same render would otherwise both compute from the
+  // same stale index and lose a step.
+  const step = useCallback(
+    (delta: number) => setIndex((i) => (((i + delta) % length) + length) % length),
+    [length],
+  );
+  const next = useCallback(() => step(1), [step]);
+  const previous = useCallback(() => step(-1), [step]);
 
   useEffect(() => {
     if (!interval || paused || length < 2) return;

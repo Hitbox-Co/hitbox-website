@@ -99,6 +99,36 @@
     scroll-behavior: smooth;
   }
 
+  /* Lenis animates scrolling itself; native smooth would fight it for the
+     same anchor jump. When Lenis is not running the CSS rule above stands. */
+  html.lenis {
+    scroll-behavior: auto;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis:not(.lenis-autoToggle).lenis-stopped {
+    overflow: clip;
+  }
+
+  /* Nested scrollers — the poster rails — keep their own scrolling. */
+  .lenis [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     background-color: var(--color-ink);
     color: var(--color-paper);

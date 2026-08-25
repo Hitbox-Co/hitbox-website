@@ -41,6 +41,10 @@ export const previewCollectibles: CollectiblePlaceholder[] = [
   {
     id: "slot-1",
     name: "Collectible name",
+    image: {
+      src: "/worlds/bix-all-stars.jpg",
+      alt: "HitBox key art: the Bix All Stars first anniversary poster.",
+    },
     collection: "Artist collection",
     claimDate: "Claim date",
     edition: "Edition number",
@@ -49,6 +53,10 @@ export const previewCollectibles: CollectiblePlaceholder[] = [
   {
     id: "slot-2",
     name: "Collectible name",
+    image: {
+      src: "/worlds/bix-stadium.jpg",
+      alt: "HitBox key art: Bix in a football kit in a floodlit stadium.",
+    },
     collection: "Tour collection",
     claimDate: "Claim date",
     status: "Claimed",
@@ -56,6 +64,10 @@ export const previewCollectibles: CollectiblePlaceholder[] = [
   {
     id: "slot-3",
     name: "Collectible name",
+    image: {
+      src: "/worlds/bix-bubble-rumble.jpg",
+      alt: "HitBox key art: Bix Bubble Rumble.",
+    },
     collection: "Limited edition collection",
     claimDate: "Claim date",
     edition: "Edition number",

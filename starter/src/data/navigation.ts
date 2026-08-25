@@ -5,8 +5,8 @@ import { site } from "@/lib/site";
 export const primaryNav: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "For Collectors", href: "/for-collectors" },
-  { label: "For Artists & Creators", href: "/for-artists" },
+  { label: "Collectors", href: "/for-collectors" },
+  { label: "Artists & Creators", href: "/for-artists" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },

@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { PlaceholderMedia } from "@/components/brand/PlaceholderMedia";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
@@ -50,13 +49,10 @@ export default function HomePage() {
                 Learn How It Works
               </Button>
 
-              <Link
-                href={hero.textLink.href}
-                className="group inline-flex items-center gap-2 font-body text-sm text-white transition-colors hover:text-brand-pale"
-              >
+              <Button href={hero.textLink.href} variant="onArt" className="group">
                 {hero.textLink.label}
                 <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -80,14 +76,15 @@ export default function HomePage() {
       </Section>
 
       {/* ------------------------------------------------------------ Why collect */}
-      <Section bordered>
+      <Section tone="brand">
         <SectionHeading
           eyebrow="For collectors"
           title="Why collect with HitBox?"
           body="HitBox expands the collecting experience by combining physical collectibles with digital experiences that continue long after the collectible has been received."
+          tone="onBrand"
         />
-        <FeatureGrid features={whyCollect} className="mt-12" />
-        <Button href="/for-collectors" variant="secondary" className="mt-10">
+        <FeatureGrid features={whyCollect} tone="onBrand" className="mt-12" />
+        <Button href="/for-collectors" variant="onArt" className="mt-10">
           Explore For Collectors
         </Button>
       </Section>
@@ -100,19 +97,20 @@ export default function HomePage() {
           body="HitBox gives artists and creators a platform to connect physical merchandise with digital experiences, allowing every collectible to become part of a larger fan experience."
         />
         <FeatureGrid features={whyCreate} className="mt-12" />
-        <Button href="/for-artists" variant="secondary" className="mt-10">
+        <Button href="/for-artists" variant="brandOutline" className="mt-10">
           Explore For Artists & Creators
         </Button>
       </Section>
 
       {/* ------------------------------------------------------------- Technology */}
-      <Section bordered>
+      <Section tone="brand">
         <SectionHeading
           eyebrow="Technology"
           title="Technology behind every collectible"
           body="HitBox uses connected technology to link physical collectibles with digital experiences while keeping the claiming process simple and secure."
+          tone="onBrand"
         />
-        <FeatureGrid features={technologyHighlights} className="mt-12" />
+        <FeatureGrid features={technologyHighlights} tone="onBrand" className="mt-12" />
       </Section>
     </>
   );

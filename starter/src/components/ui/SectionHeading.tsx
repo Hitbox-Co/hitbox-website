@@ -6,6 +6,8 @@ type SectionHeadingProps = {
   /** Small uppercase label above the heading. */
   eyebrow?: string;
   title: string;
+  /** Trailing phrase rendered in brand blue, e.g. "Together". */
+  highlight?: string;
   body?: string;
   children?: ReactNode;
   align?: "left" | "center";
@@ -18,6 +20,7 @@ type SectionHeadingProps = {
 export function SectionHeading({
   eyebrow,
   title,
+  highlight,
   body,
   children,
   align = "left",
@@ -48,6 +51,12 @@ export function SectionHeading({
 
       <Tag className={cn(Tag === "h2" ? "text-3xl sm:text-5xl" : "text-2xl sm:text-3xl")}>
         {title}
+        {highlight ? (
+          <>
+            {" "}
+            <span className={onBrand ? "text-brand-pale" : "text-brand-bright"}>{highlight}</span>
+          </>
+        ) : null}
       </Tag>
 
       {body ? (

@@ -4,6 +4,7 @@ import { Inter_Tight, Poppins } from "next/font/google";
 import { BootScreen } from "@/components/layout/BootScreen";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { site } from "@/lib/site";
 
 import "./globals.css";
@@ -58,6 +59,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "(function(){try{var s=localStorage.getItem('hitbox:theme');var t=s===\"light\"||s===\"dark\"?s:(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=t}catch(e){}})()",
           }}
         />
+
+        <SmoothScroll />
 
         <BootScreen />
 

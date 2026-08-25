@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { PlaceholderMedia } from "@/components/brand/PlaceholderMedia";
 import { Button } from "@/components/ui/Button";
 import type { CollectiblePlaceholder } from "@/types";
@@ -33,12 +35,24 @@ export function CollectionPreview({ items, className }: CollectionPreviewProps) 
             key={item.id}
             className="flex flex-col overflow-hidden rounded-[10px] border border-line bg-ink-raised"
           >
-            <PlaceholderMedia
-              label="Collectible image"
-              ratio="square"
-              labelled={false}
-              className="rounded-none border-0 border-b border-line"
-            />
+            {item.image ? (
+              <div className="relative aspect-square border-b border-line">
+                <Image
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <PlaceholderMedia
+                label="Collectible image"
+                ratio="square"
+                labelled={false}
+                className="rounded-none border-0 border-b border-line"
+              />
+            )}
 
             <div className="flex flex-1 flex-col gap-3 p-4">
               <div>

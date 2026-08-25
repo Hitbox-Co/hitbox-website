@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 
-import { PlaceholderMedia } from "@/components/brand/PlaceholderMedia";
 import { PageHero } from "@/components/layout/PageHero";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqPreview } from "@/components/sections/FaqPreview";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { PosterFan } from "@/components/sections/PosterFan";
-import { StepFlow } from "@/components/sections/StepFlow";
+import { StepCarousel } from "@/components/sections/StepCarousel";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -48,18 +47,19 @@ export default function ForArtistsPage() {
       </Section>
 
       <Section bordered tone="raised">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow="Process"
-              title="How we work together"
-              body="Every project moves through the same stages, with approval points along the way."
-            />
-            <PlaceholderMedia label="Studio imagery" ratio="video" className="mt-10" />
-          </div>
+        <SectionHeading
+          align="center"
+          eyebrow="Process"
+          title="How we work"
+          highlight="together"
+          body="Every project moves through the same stages, with approval points along the way."
+        />
 
-          <StepFlow steps={partnershipProcess} variant="chain" />
-        </div>
+        <StepCarousel
+          steps={partnershipProcess}
+          label="Partnership process"
+          className="mt-14"
+        />
       </Section>
 
       <FaqPreview title="Artist & creator questions" items={artistFaq} />

@@ -39,6 +39,8 @@ export type FaqCategory = {
 export type CollectiblePlaceholder = {
   id: string;
   name: string;
+  /** Key art for the slot. Falls back to a labelled placeholder when absent. */
+  image?: { src: string; alt: string };
   collection: string;
   claimDate: string;
   edition?: string;
