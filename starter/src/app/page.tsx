@@ -116,9 +116,6 @@ export default function HomePage() {
           body="HitBox uses connected technology to link physical collectibles with digital experiences while keeping the claiming process simple and secure."
         />
         <FeatureGrid features={technologyHighlights} className="mt-12" />
-        <Button href="/technology" variant="secondary" className="mt-10">
-          Learn More
-        </Button>
       </Section>
     </>
   );

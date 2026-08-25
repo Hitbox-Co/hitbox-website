@@ -12,7 +12,6 @@ const routes = [
   { path: "/for-collectors", priority: 0.9 },
   { path: "/for-artists", priority: 0.9 },
   { path: "/join-waitlist", priority: 0.9 },
-  { path: "/technology", priority: 0.8 },
   { path: "/about", priority: 0.8 },
   { path: "/work-with-hitbox", priority: 0.8 },
   { path: "/work-with-hitbox/artist-inquiry", priority: 0.7 },
