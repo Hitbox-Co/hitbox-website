@@ -65,11 +65,13 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label={`Switch to ${next} theme`}
       title={`Switch to ${next} theme`}
       className={cn(
-        "grid size-9 shrink-0 place-items-center rounded-[4px] border border-line text-fg transition-colors hover:border-brand-bright hover:bg-brand hover:text-white",
+        // Matches the nav's brand-outline buttons: 2px blue border, sharp
+        // parallelogram, same 36px height.
+        "grid h-9 w-10 shrink-0 place-items-center rounded-none border-2 border-brand text-fg transition-colors -skew-x-12 hover:bg-brand hover:text-white",
         className,
       )}
     >
-      <Icon className="size-4.5" />
+      <Icon className="size-4.5 skew-x-12" />
     </button>
   );
 }
