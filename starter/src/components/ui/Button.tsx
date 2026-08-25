@@ -3,7 +3,13 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-export type ButtonVariant = "primary" | "secondary" | "onArt" | "light" | "ghost";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "brandOutline"
+  | "onArt"
+  | "light"
+  | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
 /** `slant` is the parallelogram house style and the default; `square` is the opt-out. */
 export type ButtonShape = "square" | "slant";
@@ -18,6 +24,10 @@ const variants: Record<ButtonVariant, string> = {
   // Outlined, and follows the theme — for buttons sitting on page surfaces.
   secondary:
     "border-2 border-fg/60 text-fg hover:border-fg hover:bg-fg hover:text-ink active:translate-y-px",
+  // Brand-blue outline. The border token follows the theme, so it deepens to
+  // #0047db in light mode where the brighter blue would not clear AA.
+  brandOutline:
+    "border-2 border-brand text-fg hover:bg-brand hover:text-white hover:border-brand active:translate-y-px",
   // Outlined in white, for buttons sitting on key art or a brand band.
   onArt:
     "border-2 border-white/70 text-white hover:border-white hover:bg-white hover:text-navy-deep active:translate-y-px",

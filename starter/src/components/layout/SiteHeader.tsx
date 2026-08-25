@@ -39,7 +39,7 @@ export function SiteHeader() {
             <ThemeToggle />
             <Button
               href={headerActions.secondary.href}
-              variant="ghost"
+              variant="brandOutline"
               size="sm"
               className="hidden sm:inline-flex"
             >
