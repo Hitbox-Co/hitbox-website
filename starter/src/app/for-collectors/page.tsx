@@ -24,13 +24,14 @@ export default function ForCollectorsPage() {
         body="HitBox gives collectors a way to organize physical collectibles, access connected experiences, and build collections that continue growing over time."
       />
 
-      <Section>
+      <Section tone="brand">
         <SectionHeading
           eyebrow="Why join"
           title="Why join HitBox?"
           body="HitBox extends the value of physical collectibles by connecting them to a digital platform that allows collectors to organize, revisit, and interact with their collections."
+          tone="onBrand"
         />
-        <FeatureGrid features={whyJoin} className="mt-12" />
+        <FeatureGrid features={whyJoin} tone="onBrand" className="mt-12" />
       </Section>
 
       <Section bordered tone="raised">

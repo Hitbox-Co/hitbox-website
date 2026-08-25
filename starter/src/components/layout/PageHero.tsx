@@ -13,6 +13,9 @@ type PageHeroProps = {
   children?: ReactNode;
   /** Shows the cube mark as a large watermark behind the copy. */
   watermark?: boolean;
+  /** Hairline rule along the bottom edge. Turn off when the section below
+   *  should read as part of the hero rather than a separate band. */
+  bordered?: boolean;
   align?: "left" | "center";
   className?: string;
 };
@@ -25,13 +28,15 @@ export function PageHero({
   body,
   children,
   watermark = true,
+  bordered = true,
   align = "left",
   className,
 }: PageHeroProps) {
   return (
     <section
       className={cn(
-        "iso-grid relative overflow-hidden border-b border-line bg-linear-to-b from-navy-deep to-transparent light:from-brand-pale pb-16 pt-36 sm:pb-20 sm:pt-44",
+        "iso-grid relative overflow-hidden bg-linear-to-b from-navy-deep to-transparent light:from-brand-pale pb-16 pt-36 sm:pb-20 sm:pt-44",
+        bordered && "border-b border-line",
         className,
       )}
     >

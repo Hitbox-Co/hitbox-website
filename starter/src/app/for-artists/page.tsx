@@ -23,6 +23,7 @@ export default function ForArtistsPage() {
     <>
       <PageHero
         align="center"
+        bordered={false}
         eyebrow="For artists & creators"
         title="Built for"
         highlight="Artists & Creators"
@@ -37,13 +38,14 @@ export default function ForArtistsPage() {
         <PosterFan items={artistMerch} priority />
       </Section>
 
-      <Section>
+      <Section tone="brand">
         <SectionHeading
           eyebrow="Why partner"
           title="Why partner with HitBox?"
           body="HitBox combines physical merchandise with digital experiences, allowing artists to build collectible campaigns around albums, tours, events, product launches, and future releases."
+          tone="onBrand"
         />
-        <FeatureGrid features={whyPartner} className="mt-12" />
+        <FeatureGrid features={whyPartner} tone="onBrand" className="mt-12" />
       </Section>
 
       <Section bordered tone="raised">

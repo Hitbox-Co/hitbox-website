@@ -232,6 +232,7 @@
     top: 3.5rem;
     bottom: -2.5rem;
     width: 2px;
-    background: linear-gradient(to bottom, var(--color-brand), transparent);
+    /* Overridable so the connector can go white on a brand band. */
+    background: linear-gradient(to bottom, var(--step-line-color, var(--color-brand)), transparent);
   }
 }

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { PlaceholderMedia } from "@/components/brand/PlaceholderMedia";
 import { PageHero } from "@/components/layout/PageHero";
 import { CtaSection } from "@/components/sections/CtaSection";
-import { FaqPreview } from "@/components/sections/FaqPreview";
 import { StepFlow } from "@/components/sections/StepFlow";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
@@ -13,7 +12,6 @@ import {
   collectibleFields,
   collectionTypes,
   experienceTypes,
-  howItWorksFaq,
   lifecycleSteps,
 } from "@/data/how-it-works";
 
@@ -32,9 +30,9 @@ export default function HowItWorksPage() {
         body="Every HitBox collectible follows the same simple process. Once claimed, it becomes part of your HitBox account and can be revisited at any time."
       />
 
-      <Section>
+      <Section tone="brand">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-          <StepFlow steps={lifecycleSteps} />
+          <StepFlow steps={lifecycleSteps} tone="onBrand" />
 
           <div className="flex flex-col gap-6 lg:sticky lg:top-28 lg:self-start">
             <PlaceholderMedia label="Process artwork" ratio="portrait" />
@@ -73,29 +71,28 @@ export default function HowItWorksPage() {
       </Section>
 
       {/* Experiences */}
-      <Section bordered>
+      <Section tone="brand">
         <SectionHeading
           eyebrow="Experiences"
           title="What a collectible can unlock"
           body="The available experience depends on the artist, creator, brand, or release behind each collectible."
+          tone="onBrand"
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {experienceTypes.map((type) => (
-            <Card key={type} className="py-5">
+            <Card key={type} tone="onBrand" className="py-5">
               <span className="font-display text-[15px] font-semibold">{type}</span>
             </Card>
           ))}
         </div>
 
-        <p className="mt-8 max-w-2xl text-[15px] leading-relaxed text-muted">
+        <p className="mt-8 max-w-2xl text-[15px] leading-relaxed text-white">
           Collectors can return to previously claimed collectibles through their HitBox account.
           Every claimed collectible remains organized within its collection and continues to display
           any available experiences associated with that release.
         </p>
       </Section>
-
-      <FaqPreview items={howItWorksFaq} />
 
       <CtaSection
         title="Ready when the first collectibles are"

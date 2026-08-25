@@ -7,10 +7,13 @@ type StepFlowProps = {
   className?: string;
   /** `stacked` is the numbered vertical list; `chain` is the compact arrow flow. */
   variant?: "stacked" | "chain";
+  /** `onBrand` for a flow sitting on a brand-blue band. */
+  tone?: "theme" | "onBrand";
 };
 
 /** Sequential process display — the claim lifecycle and partnership process. */
-export function StepFlow({ steps, className, variant = "stacked" }: StepFlowProps) {
+export function StepFlow({ steps, className, variant = "stacked", tone = "theme" }: StepFlowProps) {
+  const onBrand = tone === "onBrand";
   if (variant === "chain") {
     return (
       <ol className={cn("flex flex-col items-stretch", className)}>
@@ -35,20 +38,32 @@ export function StepFlow({ steps, className, variant = "stacked" }: StepFlowProp
   }
 
   return (
-    <ol className={cn("flex flex-col gap-10", className)}>
+    <ol className={cn("flex flex-col gap-10", onBrand && "[--step-line-color:#fff]", className)}>
       {steps.map((step, index) => (
         <li
           key={step.title}
           className={cn("relative flex gap-5 sm:gap-7", index < steps.length - 1 && "step-line")}
         >
-          <span className="grid size-12 shrink-0 place-items-center rounded-full bg-brand font-display text-base font-extrabold text-white shadow-[0_0_30px_-6px_rgba(0,87,255,0.9)]">
+          <span
+            className={cn(
+              "grid size-12 shrink-0 place-items-center rounded-full font-display text-base font-extrabold",
+              onBrand
+                ? "bg-white text-brand shadow-[0_0_30px_-6px_rgba(255,255,255,0.75)]"
+                : "bg-brand text-white shadow-[0_0_30px_-6px_rgba(0,87,255,0.9)]",
+            )}
+          >
             {String(index + 1).padStart(2, "0")}
           </span>
 
           <div className="pt-1.5">
-            <h3 className="text-xl sm:text-2xl">{step.title}</h3>
+            <h3 className={cn("text-xl sm:text-2xl", onBrand && "text-white")}>{step.title}</h3>
             {step.body ? (
-              <p className="mt-3 max-w-2xl font-body text-[15px] leading-relaxed text-muted">
+              <p
+                className={cn(
+                  "mt-3 max-w-2xl font-body text-[15px] leading-relaxed",
+                  onBrand ? "text-white" : "text-muted",
+                )}
+              >
                 {step.body}
               </p>
             ) : null}
@@ -56,8 +71,20 @@ export function StepFlow({ steps, className, variant = "stacked" }: StepFlowProp
             {step.points?.length ? (
               <ul className="mt-4 flex flex-col gap-2">
                 {step.points.map((point) => (
-                  <li key={point} className="flex gap-3 font-body text-[15px] text-muted">
-                    <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" />
+                  <li
+                    key={point}
+                    className={cn(
+                      "flex gap-3 font-body text-[15px]",
+                      onBrand ? "text-white" : "text-muted",
+                    )}
+                  >
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "mt-2 size-1.5 shrink-0 rounded-full",
+                        onBrand ? "bg-white" : "bg-brand",
+                      )}
+                    />
                     {point}
                   </li>
                 ))}
