@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PlaceholderMedia } from "@/components/brand/PlaceholderMedia";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
-import { StepFlow } from "@/components/sections/StepFlow";
+import { StepPanels } from "@/components/sections/StepPanels";
 import { WorldRail } from "@/components/sections/WorldRail";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon } from "@/components/ui/Icons";
@@ -66,20 +66,17 @@ export default function HomePage() {
 
       {/* ------------------------------------------------------ How it works preview */}
       <Section bordered tone="raised">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="lg:sticky lg:top-32 lg:self-start">
-            <SectionHeading
-              eyebrow="How it works"
-              title="How it works"
-              body="Claiming a HitBox collectible only takes a few simple steps."
-            />
-            <Button href="/how-it-works" className="mt-8">
-              See How It Works
-            </Button>
-          </div>
+        <SectionHeading
+          eyebrow="How it works"
+          title="How it works"
+          body="Claiming a HitBox collectible only takes a few simple steps."
+        />
 
-          <StepFlow steps={claimSteps} variant="chain" />
-        </div>
+        <StepPanels steps={claimSteps} className="mt-12" />
+
+        <Button href="/how-it-works" className="mt-10">
+          See How It Works
+        </Button>
       </Section>
 
       {/* ------------------------------------------------------------ Why collect */}
