@@ -94,7 +94,7 @@ export function MobileNav() {
             </Button>
             <Button
               href={headerActions.secondary.href}
-              variant="secondary"
+              variant="brandOutline"
               size="lg"
               className="w-full"
             >
