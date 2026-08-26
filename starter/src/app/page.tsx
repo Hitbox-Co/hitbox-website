@@ -1,5 +1,6 @@
 
 import { PlaceholderMedia } from "@/components/brand/PlaceholderMedia";
+import { AppDownload } from "@/components/sections/AppDownload";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import { StepPanels } from "@/components/sections/StepPanels";
@@ -13,7 +14,6 @@ import { worldPosters } from "@/data/worlds";
 import {
   claimSteps,
   hero,
-  technologyHighlights,
   whatIsHitBox,
   whatIsHitBoxFeatures,
   whyCollect,
@@ -104,16 +104,7 @@ export default function HomePage() {
         </Button>
       </Section>
 
-      {/* ------------------------------------------------------------- Technology */}
-      <Section tone="brand">
-        <SectionHeading
-          eyebrow="Technology"
-          title="Technology behind every collectible"
-          body="HitBox uses connected technology to link physical collectibles with digital experiences while keeping the claiming process simple and secure."
-          tone="onBrand"
-        />
-        <FeatureGrid features={technologyHighlights} tone="onBrand" className="mt-12" />
-      </Section>
+      <AppDownload />
     </>
   );
 }
