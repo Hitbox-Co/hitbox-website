@@ -20,7 +20,8 @@ export default function ForCollectorsPage() {
     <>
       <PageHero
         eyebrow="For collectors"
-        title="Built for collectors"
+        title="Built for"
+        highlight="collectors"
         body="HitBox gives collectors a way to organize physical collectibles, access connected experiences, and build collections that continue growing over time."
       />
 

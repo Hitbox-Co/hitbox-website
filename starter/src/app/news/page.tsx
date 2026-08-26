@@ -19,7 +19,9 @@ export default function NewsPage() {
     <>
       <PageHero
         eyebrow="News"
-        title="HitBox news"
+        title="news"
+        highlight="HitBox"
+        highlightFirst
         body="Announcements, releases and platform updates. Everything published here is also sent to the waitlist first."
       />
 

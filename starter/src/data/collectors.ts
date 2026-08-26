@@ -66,6 +66,18 @@ export const previewCollectibles: CollectiblePlaceholder[] = [
     status: "Claimed",
   },
   {
+    id: "bix-bihu-singer",
+    name: "Bihu Singer",
+    image: {
+      src: "/collection/bix-assam-singer.jpg",
+      alt: "Collectible figure of a singer in a blue Assamese saree and gamosa, holding a microphone.",
+    },
+    collection: "Artist collection",
+    claimDate: "09 April 2026",
+    edition: "008 / 300",
+    status: "Claimed",
+  },
+  {
     id: "azure-jersey",
     name: "Azure Jersey",
     image: {

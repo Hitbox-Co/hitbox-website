@@ -20,7 +20,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title="About HitBox"
+        title="About"
+        highlight="HitBox"
         body="HitBox is building a platform that combines physical collectibles with digital experiences. Our goal is to give collectors, artists, creators, and brands a new way to interact with collectibles beyond the physical product."
       />
 
