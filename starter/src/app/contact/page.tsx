@@ -16,7 +16,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Contact HitBox"
+        title="Contact"
+        highlight="HitBox"
         body="Send us a message and the team will get back to you."
         watermark={false}
       />

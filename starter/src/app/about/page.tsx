@@ -20,7 +20,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title="About HitBox"
+        title="About"
+        highlight="HitBox"
         body="HitBox is building a platform that combines physical collectibles with digital experiences. Our goal is to give collectors, artists, creators, and brands a new way to interact with collectibles beyond the physical product."
       />
 
@@ -36,13 +37,14 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section bordered tone="raised">
+      <Section tone="brand">
         <SectionHeading
           eyebrow="Values"
           title="Our values"
           body="Four principles that decide what we build and what we leave out."
+          tone="onBrand"
         />
-        <FeatureGrid features={values} className="mt-12" />
+        <FeatureGrid features={values} tone="onBrand" className="mt-12" />
       </Section>
 
       <Section bordered>

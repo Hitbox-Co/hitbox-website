@@ -64,7 +64,8 @@ export default function HomePage() {
       <Section bordered tone="raised">
         <SectionHeading
           eyebrow="How it works"
-          title="How it works"
+          title="How it"
+          highlight="works"
           body="Claiming a HitBox collectible only takes a few simple steps."
         />
 
@@ -93,7 +94,8 @@ export default function HomePage() {
       <Section bordered tone="raised">
         <SectionHeading
           eyebrow="For artists & creators"
-          title="Why create with HitBox?"
+          title="Why create with"
+          highlight="HitBox?"
           body="HitBox gives artists and creators a platform to connect physical merchandise with digital experiences, allowing every collectible to become part of a larger fan experience."
         />
         <FeatureGrid features={whyCreate} className="mt-12" />

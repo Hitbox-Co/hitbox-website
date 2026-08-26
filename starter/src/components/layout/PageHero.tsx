@@ -7,8 +7,10 @@ import { cn } from "@/lib/utils";
 type PageHeroProps = {
   eyebrow?: string;
   title: string;
-  /** Trailing phrase rendered in brand blue, e.g. "Artists & Creators". */
+  /** Phrase rendered in brand blue, e.g. "Artists & Creators". */
   highlight?: string;
+  /** Puts the highlight before the title, for headings like "HitBox news". */
+  highlightFirst?: boolean;
   body?: string;
   children?: ReactNode;
   /** Shows the cube mark as a large watermark behind the copy. */
@@ -25,6 +27,7 @@ export function PageHero({
   eyebrow,
   title,
   highlight,
+  highlightFirst = false,
   body,
   children,
   watermark = true,
@@ -60,8 +63,18 @@ export function PageHero({
         ) : null}
 
         <h1 className={cn("mt-4 text-4xl sm:text-6xl", align === "center" && "mx-auto max-w-4xl")}>
+          {highlight && highlightFirst ? (
+            <>
+              <span className="text-brand-bright">{highlight}</span>{" "}
+            </>
+          ) : null}
           {title}
-          {highlight ? <> <span className="text-brand-bright">{highlight}</span></> : null}
+          {highlight && !highlightFirst ? (
+            <>
+              {" "}
+              <span className="text-brand-bright">{highlight}</span>
+            </>
+          ) : null}
         </h1>
 
         {body ? (

@@ -4,11 +4,13 @@ import { site } from "@/lib/site";
 /** Header navigation, in the order given by the build sheet. */
 export const primaryNav: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "How It Works", href: "/how-it-works" },
+  // Parked, not deleted — likely coming back to the header later. The page and
+  // its footer link both stay live in the meantime.
+  // { label: "How It Works", href: "/how-it-works" },
   { label: "Collectors", href: "/for-collectors" },
   { label: "Artists & Creators", href: "/for-artists" },
-  { label: "About", href: "/about" },
   { label: "News", href: "/news" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -47,7 +49,6 @@ export const footerGroups: FooterGroup[] = [
     heading: "Community",
     links: [
       ...site.social.map((item) => ({ label: item.label, href: item.href })),
-      { label: "Join Waitlist", href: "/join-waitlist" },
     ],
   },
 ];
