@@ -1,6 +1,7 @@
 /**
- * Site-wide constants. Contact details and social handles are intentionally
- * left as placeholders — fill them in before launch rather than inventing them.
+ * Site-wide constants. The social handles are still placeholders — fill them
+ * in before launch rather than inventing them. The contact address is live and
+ * is the single source for every mailto on the site.
  */
 export const site = {
   name: "HitBox Collectibles",
@@ -9,7 +10,7 @@ export const site = {
   description:
     "HitBox brings physical collectibles to life through connected digital experiences that continue long after the moment you collect them.",
   url: "https://hitboxcollectibles.com",
-  email: "hello@hitboxcollectibles.com",
+  email: "Hitboxcollectibles.admin@gmail.com",
   social: [
     { label: "Instagram", href: "#" },
     { label: "X", href: "#" },
