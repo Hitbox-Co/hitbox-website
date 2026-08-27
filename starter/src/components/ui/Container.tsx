@@ -16,7 +16,9 @@ type ContainerProps = {
 const widths = {
   narrow: "max-w-3xl",
   default: "max-w-6xl",
-  wide: "max-w-[1400px]",
+  // In rem (1400px at the default root) so it scales with the wide-screen
+  // step-down in globals.css rather than staying stubbornly 1400px wide.
+  wide: "max-w-[87.5rem]",
 } as const;
 
 /** The single horizontal rhythm shared by every section. */

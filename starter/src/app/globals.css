@@ -99,6 +99,18 @@
     scroll-behavior: smooth;
   }
 
+  /* Large screens run the layout at 80%, so the site reads at the size it was
+     designed at instead of growing with the viewport — the same result as
+     viewing it at 80% browser zoom. Everything sized in rem (type, spacing,
+     container widths) follows; border widths and other px values do not.
+     Media queries resolve rem against the initial 16px, so Tailwind's
+     breakpoints stay where they are and this cannot feed back on itself. */
+  @media (min-width: 96rem) {
+    html {
+      font-size: 80%;
+    }
+  }
+
   /* Lenis animates scrolling itself; native smooth would fight it for the
      same anchor jump. When Lenis is not running the CSS rule above stands. */
   html.lenis {
