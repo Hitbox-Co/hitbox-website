@@ -205,6 +205,50 @@
     );
   }
 
+  /* Hero copy entrance.
+     The animation classes are only rendered on the active slide, so React
+     re-adding them on a slide change restarts the animation — no keys, no
+     state, no JS timers. `backwards` holds the from-state through the delay. */
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+  }
+
+  @keyframes hero-word {
+    from {
+      transform: translateY(140%);
+    }
+  }
+
+  .hero-rise {
+    animation: hero-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  /* Masks a headline word so it rises from behind the line. Clipped rather
+     than `overflow: hidden` because the hero h1 sets leading below 1, so the
+     glyphs overflow their own line box and a plain mask would crop them. */
+  .hero-word {
+    display: inline-block;
+    clip-path: inset(-0.4em 0 -0.14em 0);
+  }
+
+  .hero-word > span {
+    display: inline-block;
+  }
+
+  .hero-word > span.hero-word-in {
+    animation: hero-word 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-rise,
+    .hero-word > span.hero-word-in {
+      animation: none;
+    }
+  }
+
   /* Hollow display type — the oversized outlined section titles */
   .text-outline {
     color: transparent;

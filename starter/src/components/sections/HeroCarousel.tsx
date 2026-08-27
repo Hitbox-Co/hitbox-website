@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Fragment } from "react";
 
 import { LogoMark } from "@/components/brand/LogoMark";
 import { Button } from "@/components/ui/Button";
@@ -13,6 +14,10 @@ import { cn } from "@/lib/utils";
 type HeroCarouselProps = {
   slides: HeroSlide[];
 };
+
+/** Entrance stagger, in ms — see `.hero-rise` / `.hero-word` in globals.css. */
+const EYEBROW_DELAY = 90;
+const WORD_STEP = 65;
 
 /**
  * Full-bleed key-art hero, styled after a game publisher's front page: the
@@ -84,53 +89,91 @@ export function HeroCarousel({ slides }: HeroCarouselProps) {
         the tallest slide and paging never resizes the hero.
       */}
       <Container width="wide" className="relative z-10 grid items-end pb-24 pt-40 sm:pb-28">
-        {slides.map((slide, i) => (
-          <div
-            key={slide.id}
-            role="group"
-            aria-roledescription="slide"
-            aria-label={`${i + 1} of ${slides.length}`}
-            aria-hidden={i !== index}
-            inert={i !== index}
-            className={cn(
-              "col-start-1 row-start-1 max-w-3xl self-end text-white transition-all duration-500",
-              i === index
-                ? "translate-y-0 opacity-100"
-                : "pointer-events-none translate-y-4 opacity-0",
-            )}
-          >
-            <div className="flex flex-wrap items-center gap-2.5">
-              {slide.flags?.map((flag) => (
-                <span
-                  key={flag}
-                  className="inline-flex -skew-x-12 items-center bg-white px-2.5 py-1 font-display text-[11px] font-extrabold uppercase leading-none tracking-[0.08em] text-navy-deep"
-                >
-                  <span className="skew-x-12">{flag}</span>
+        {slides.map((slide, i) => {
+          const active = i === index;
+          const words = slide.title.split(" ");
+          // The headline drives the stagger; body and buttons follow it in.
+          const bodyDelay = EYEBROW_DELAY + words.length * WORD_STEP + 90;
+
+          return (
+            <div
+              key={slide.id}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${slides.length}`}
+              aria-hidden={!active}
+              inert={!active}
+              className={cn(
+                "col-start-1 row-start-1 max-w-3xl self-end text-white transition-opacity",
+                // The incoming slide appears at once and lets its children
+                // animate in; only the outgoing one fades.
+                active ? "opacity-100 duration-0" : "pointer-events-none opacity-0 duration-500",
+              )}
+            >
+              <div
+                className={cn("flex flex-wrap items-center gap-2.5", active && "hero-rise")}
+                style={active ? { animationDelay: `${EYEBROW_DELAY}ms` } : undefined}
+              >
+                {slide.flags?.map((flag) => (
+                  <span
+                    key={flag}
+                    className="inline-flex -skew-x-12 items-center bg-white px-2.5 py-1 font-display text-[11px] font-extrabold uppercase leading-none tracking-[0.08em] text-navy-deep"
+                  >
+                    <span className="skew-x-12">{flag}</span>
+                  </span>
+                ))}
+                <span className="font-display text-xs font-extrabold uppercase tracking-[0.28em] text-white/85 sm:text-sm">
+                  {slide.eyebrow}
                 </span>
-              ))}
-              <span className="font-display text-xs font-extrabold uppercase tracking-[0.28em] text-white/85 sm:text-sm">
-                {slide.eyebrow}
-              </span>
+              </div>
+
+              {/* Word by word, each rising from behind the line above it. */}
+              <h1 className="mt-3 text-[2.75rem] leading-[0.92] drop-shadow-[0_6px_30px_rgba(5,10,30,0.6)] sm:text-7xl lg:text-8xl">
+                {words.map((word, w) => (
+                  <Fragment key={`${word}-${w}`}>
+                    {/* A real space, so the heading still reads as words to
+                        screen readers and still wraps between them. */}
+                    {w > 0 ? " " : null}
+                    <span className="hero-word">
+                      <span
+                        className={cn(active && "hero-word-in")}
+                        style={
+                          active
+                            ? { animationDelay: `${EYEBROW_DELAY + w * WORD_STEP}ms` }
+                            : undefined
+                        }
+                      >
+                        {word}
+                      </span>
+                    </span>
+                  </Fragment>
+                ))}
+              </h1>
+
+              <p
+                className={cn(
+                  "mt-5 max-w-lg font-body text-sm leading-relaxed text-white/80 sm:text-base",
+                  active && "hero-rise",
+                )}
+                style={active ? { animationDelay: `${bodyDelay}ms` } : undefined}
+              >
+                {slide.body}
+              </p>
+
+              <div
+                className={cn("mt-8 flex flex-wrap gap-4", active && "hero-rise")}
+                style={active ? { animationDelay: `${bodyDelay + 110}ms` } : undefined}
+              >
+                <Button href={slide.primary.href} size="lg">
+                  {slide.primary.label}
+                </Button>
+                <Button href={slide.secondary.href} variant="onArt" size="lg">
+                  {slide.secondary.label}
+                </Button>
+              </div>
             </div>
-
-            <h1 className="mt-3 text-[2.75rem] leading-[0.92] drop-shadow-[0_6px_30px_rgba(5,10,30,0.6)] sm:text-7xl lg:text-8xl">
-              {slide.title}
-            </h1>
-
-            <p className="mt-5 max-w-lg font-body text-sm leading-relaxed text-white/80 sm:text-base">
-              {slide.body}
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button href={slide.primary.href} size="lg">
-                {slide.primary.label}
-              </Button>
-              <Button href={slide.secondary.href} variant="onArt" size="lg">
-                {slide.secondary.label}
-              </Button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </Container>
 
       {/* Edge arrows — white discs, half off-canvas */}

@@ -71,8 +71,8 @@ export function AppDownload() {
           <Image
             src={appDownload.mockup.src}
             alt={appDownload.mockup.alt}
-            width={1200}
-            height={2054}
+            width={760}
+            height={1348}
             sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 14rem"
             className="h-auto w-full [filter:drop-shadow(0_16px_20px_rgba(0,10,40,0.45))_drop-shadow(0_48px_60px_rgba(0,8,30,0.55))]"
           />
