@@ -48,8 +48,11 @@ export type CollectiblePlaceholder = {
 };
 
 /** A store badge in the app download band. Mock only — the app has not been
- *  released, so the badges carry a label and a platform but no link. */
+ *  released, so the badges carry copy and a platform but no link. */
 export type StoreBadge = {
   platform: "ios" | "android";
+  /** Small first line, e.g. "Download on the". */
+  caption: string;
+  /** Store name, set larger underneath. */
   label: string;
 };

@@ -31,14 +31,14 @@ export const whatIsHitBoxFeatures: (Feature & { icon: typeof CubeIcon })[] = [
     body: "Physical products that connect to the HitBox platform.",
   },
   {
-    icon: ScanIcon,
-    title: "Digital claiming",
-    body: "Collectors can claim supported collectibles to their HitBox account.",
-  },
-  {
     icon: LayersIcon,
     title: "Digital collections",
     body: "Claimed collectibles are automatically organized into collections inside the user's account.",
+  },
+  {
+    icon: ScanIcon,
+    title: "Digital claiming",
+    body: "Collectors can claim supported collectibles to their HitBox account.",
   },
   {
     icon: SparkIcon,

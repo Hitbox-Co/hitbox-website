@@ -233,3 +233,12 @@ export function AndroidIcon(props: IconProps) {
     </svg>
   );
 }
+
+/** Play-store triangle, drawn as a plain mark rather than the four-colour one. */
+export function PlayIcon(props: IconProps) {
+  return (
+    <svg {...defaults} fill="currentColor" stroke="none" {...props}>
+      <path d="M4.2 2.5a1.1 1.1 0 0 0-.6 1v17a1.1 1.1 0 0 0 .6 1L14 12 4.2 2.5ZM15.4 10.6 5.6 1.4l11.1 6.4-1.3 2.8ZM5.6 22.6l9.8-9.2 1.3 2.8-11.1 6.4ZM17.9 8.6l2.7 1.6a2 2 0 0 1 0 3.6l-2.7 1.6L16.2 12l1.7-3.4Z" />
+    </svg>
+  );
+}
