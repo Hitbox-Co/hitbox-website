@@ -6,7 +6,6 @@ import {
   LayersIcon,
   LoopIcon,
   ScanIcon,
-  ShieldIcon,
   SparkIcon,
   UnlockIcon,
 } from "@/components/ui/Icons";
@@ -105,28 +104,5 @@ export const whyCreate: (Feature & { icon: typeof CubeIcon })[] = [
     icon: ControlsIcon,
     title: "Creative control",
     body: "Artists control the experience connected to their collectibles.",
-  },
-];
-
-export const technologyHighlights: (Feature & { icon: typeof CubeIcon })[] = [
-  {
-    icon: CubeIcon,
-    title: "Connected collectibles",
-    body: "Every collectible can connect to a digital experience.",
-  },
-  {
-    icon: ScanIcon,
-    title: "Scan & claim",
-    body: "Collectors can quickly claim collectibles using a compatible mobile device.",
-  },
-  {
-    icon: LayersIcon,
-    title: "Digital collections",
-    body: "Claimed collectibles are organized into digital collections.",
-  },
-  {
-    icon: ShieldIcon,
-    title: "Secure platform",
-    body: "Each collectible is securely verified before it is added to a collector's account.",
   },
 ];

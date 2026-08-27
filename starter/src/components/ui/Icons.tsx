@@ -202,3 +202,34 @@ export function MoonIcon(props: IconProps) {
     </svg>
   );
 }
+
+/* Platform glyphs for the app store badges. Both are solid marks rather than
+   the stroked set above, so they override the shared defaults. */
+
+export function AppleIcon(props: IconProps) {
+  return (
+    <svg {...defaults} fill="currentColor" stroke="none" {...props}>
+      <path d="M16.1 1.6c.07 1.06-.33 2.09-1.03 2.85-.72.79-1.9 1.4-2.94 1.32a3.4 3.4 0 0 1 1.03-2.79A4.35 4.35 0 0 1 16.1 1.6ZM19.4 17.2c-.5 1.16-.75 1.68-1.4 2.7-.9 1.44-2.17 3.22-3.74 3.23-1.4.01-1.75-.91-3.65-.9-1.9.01-2.29.92-3.68.9-1.57-.01-2.78-1.61-3.68-3.05-2.53-4-2.8-8.7-1.23-11.2 1.1-1.77 2.85-2.81 4.49-2.81 1.67 0 2.72.92 4.1.92 1.34 0 2.16-.92 4.09-.92 1.46 0 3.01.8 4.12 2.19-3.62 1.98-3.03 7.16.58 8.94Z" />
+    </svg>
+  );
+}
+
+export function AndroidIcon(props: IconProps) {
+  return (
+    <svg {...defaults} fill="currentColor" stroke="none" {...props}>
+      <path
+        d="M7.6 3.9 8.7 5.7M16.4 3.9 15.3 5.7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 5.2c-3.15 0-5.7 2.05-5.95 4.65h11.9C17.7 7.25 15.15 5.2 12 5.2Zm-2.4 3.3a.68.68 0 1 1 0-1.36.68.68 0 0 1 0 1.36Zm4.8 0a.68.68 0 1 1 0-1.36.68.68 0 0 1 0 1.36Z"
+      />
+      <path d="M6.3 11.15h11.4v5.6a1.6 1.6 0 0 1-1.6 1.6H7.9a1.6 1.6 0 0 1-1.6-1.6v-5.6Z" />
+      <path d="M3.9 11.15a1.15 1.15 0 0 1 2.3 0v4.1a1.15 1.15 0 0 1-2.3 0v-4.1ZM17.8 11.15a1.15 1.15 0 0 1 2.3 0v4.1a1.15 1.15 0 0 1-2.3 0v-4.1ZM8.7 18.35H11v2.5a1.15 1.15 0 0 1-2.3 0v-2.5ZM13 18.35h2.3v2.5a1.15 1.15 0 0 1-2.3 0v-2.5Z" />
+    </svg>
+  );
+}
