@@ -1,9 +1,9 @@
 /**
  * Admin dashboard configuration.
  *
- * The tables below are intentionally empty. Real rows appear once form
- * submissions are persisted (see the Phase 2 note in `src/lib/submissions.ts`)
- * — the dashboard is not seeded with invented leads.
+ * The tables below are intentionally empty. Real rows appear once the web API
+ * is storing submissions (see docs/architecture/web-api-integration.md) — the
+ * dashboard is not seeded with invented leads.
  */
 
 export type Column = {

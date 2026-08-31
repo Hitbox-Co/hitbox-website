@@ -8,7 +8,7 @@ import { isValidEmail } from "@/lib/utils";
 
 export function ArtistInquiryForm() {
   const { onSubmit, submitting, error } = useFormSubmit({
-    endpoint: "/api/artist-inquiry",
+    endpoint: "artist-inquiry",
     validate: (data) => {
       if (!String(data.name ?? "").trim()) return "Please enter your name.";
       if (!isValidEmail(String(data.email ?? ""))) return "Please enter a valid email address.";

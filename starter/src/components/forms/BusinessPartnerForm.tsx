@@ -8,7 +8,7 @@ import { isValidEmail } from "@/lib/utils";
 
 export function BusinessPartnerForm() {
   const { onSubmit, submitting, error } = useFormSubmit({
-    endpoint: "/api/business-inquiry",
+    endpoint: "business-inquiry",
     validate: (data) => {
       if (!String(data.name ?? "").trim()) return "Please enter your name.";
       if (!String(data.company ?? "").trim()) return "Please enter your company name.";

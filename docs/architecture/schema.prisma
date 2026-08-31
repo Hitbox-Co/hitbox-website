@@ -1,0 +1,239 @@
+// HitBox Web API — Prisma schema.
+//
+// Source of truth for the DB structure is docs/architecture/database-schema.md
+// at the repo root — update both together. This is a single schema file
+// (not the per-domain "Hybrid Prisma Architecture" used by the full
+// platform's hitbox-backend-monorepo) because Phase 1 only needs the
+// lead-capture tables below; see docs/architecture/system-architecture.md
+// for why.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Prisma 7: the connection URL is no longer set here — it's resolved in
+// prisma.config.ts (for Migrate/Studio) and passed via a driver adapter to
+// the PrismaClient constructor at runtime (see src/lib/prisma.ts).
+datasource db {
+  provider = "postgresql"
+}
+
+enum WaitlistStatus {
+  pending
+  confirmed
+  unsubscribed
+  suppressed
+}
+
+enum LeadStatus {
+  new
+  reviewing
+  qualified
+  contacted
+  meeting_scheduled
+  in_discussion
+  on_hold
+  closed_won
+  closed_lost
+  spam
+}
+
+enum LeadPriority {
+  unreviewed
+  low
+  medium
+  high
+  urgent
+}
+
+enum LeadType {
+  artist
+  partner
+  contact
+}
+
+enum AdminRole {
+  administrator
+  lead_manager
+  viewer
+}
+
+model WaitlistSubscriber {
+  id                    String         @id @default(uuid())
+  email                 String
+  emailNormalized       String         @unique @map("email_normalized")
+  firstName             String?        @map("first_name")
+  lastName              String?        @map("last_name")
+  country               String?
+  stateRegion           String?        @map("state_region")
+  city                  String?
+  ageRange              String?        @map("age_range")
+  interests             String[]
+  musicGenres           String[]       @map("music_genres")
+  referralSource        String?        @map("referral_source")
+  utmSource             String?        @map("utm_source")
+  utmMedium             String?        @map("utm_medium")
+  utmCampaign           String?        @map("utm_campaign")
+  utmContent            String?        @map("utm_content")
+  utmTerm               String?        @map("utm_term")
+  status                WaitlistStatus @default(pending)
+  confirmationTokenHash String?        @map("confirmation_token_hash")
+  confirmationExpiresAt DateTime?      @map("confirmation_expires_at")
+  confirmedAt           DateTime?      @map("confirmed_at")
+  unsubscribedAt        DateTime?      @map("unsubscribed_at")
+  consentVersion        String         @map("consent_version")
+  consentTimestamp      DateTime       @map("consent_timestamp")
+  sourcePage            String?        @map("source_page")
+  ipHash                String?        @map("ip_hash")
+  userAgentSummary      String?        @map("user_agent_summary")
+  createdAt             DateTime       @default(now()) @map("created_at")
+  updatedAt             DateTime       @updatedAt @map("updated_at")
+
+  @@map("waitlist_subscribers")
+}
+
+model ArtistLead {
+  id                       String       @id @default(uuid())
+  artistName               String       @map("artist_name")
+  primaryCategory          String       @map("primary_category")
+  country                  String
+  website                  String?
+  primarySocialUrl         String?      @map("primary_social_url")
+  additionalSocialUrls     String[]     @map("additional_social_urls")
+  contactName              String       @map("contact_name")
+  contactRole              String       @map("contact_role")
+  contactEmail             String       @map("contact_email")
+  contactPhone             String?      @map("contact_phone")
+  managementCompany        String?      @map("management_company")
+  recordLabel              String?      @map("record_label")
+  audienceRange            String?      @map("audience_range")
+  monthlyListenerRange     String?      @map("monthly_listener_range")
+  socialFollowingRange     String?      @map("social_following_range")
+  upcomingRelease          String?      @map("upcoming_release")
+  upcomingTourOrEvent      String?      @map("upcoming_tour_or_event")
+  existingMerchandise      String?      @map("existing_merchandise")
+  collaborationDescription String       @map("collaboration_description")
+  collectibleFormats       String[]     @map("collectible_formats")
+  contentTypes             String[]     @map("content_types")
+  timeline                 String?
+  authorizedConfirmation   Boolean      @map("authorized_confirmation")
+  leadStatus               LeadStatus   @default(new) @map("lead_status")
+  priority                 LeadPriority @default(unreviewed)
+  assignedUserId           String?      @map("assigned_user_id")
+  followUpAt               DateTime?    @map("follow_up_at")
+  sourcePage               String?      @map("source_page")
+  utmSource                String?      @map("utm_source")
+  utmMedium                String?      @map("utm_medium")
+  utmCampaign              String?      @map("utm_campaign")
+  ipHash                   String?      @map("ip_hash")
+  consentVersion           String       @map("consent_version")
+  consentTimestamp         DateTime     @map("consent_timestamp")
+  createdAt                DateTime     @default(now()) @map("created_at")
+  updatedAt                DateTime     @updatedAt @map("updated_at")
+
+  @@map("artist_leads")
+}
+
+model PartnerLead {
+  id                   String       @id @default(uuid())
+  companyName          String       @map("company_name")
+  contactName          String       @map("contact_name")
+  jobTitle             String       @map("job_title")
+  workEmail            String       @map("work_email")
+  phone                String?
+  country              String
+  partnershipType      String       @map("partnership_type")
+  companyWebsite       String       @map("company_website")
+  companySize          String?      @map("company_size")
+  linkedinUrl          String?      @map("linkedin_url")
+  relevantCapabilities String?      @map("relevant_capabilities")
+  desiredTimeline      String?      @map("desired_timeline")
+  message              String
+  leadStatus           LeadStatus   @default(new) @map("lead_status")
+  priority             LeadPriority @default(unreviewed)
+  assignedUserId       String?      @map("assigned_user_id")
+  followUpAt           DateTime?    @map("follow_up_at")
+  sourcePage           String?      @map("source_page")
+  utmSource            String?      @map("utm_source")
+  utmMedium            String?      @map("utm_medium")
+  utmCampaign          String?      @map("utm_campaign")
+  ipHash               String?      @map("ip_hash")
+  consentVersion       String       @map("consent_version")
+  consentTimestamp     DateTime     @map("consent_timestamp")
+  createdAt            DateTime     @default(now()) @map("created_at")
+  updatedAt            DateTime     @updatedAt @map("updated_at")
+
+  @@map("partner_leads")
+}
+
+model ContactSubmission {
+  id               String       @id @default(uuid())
+  name             String
+  email            String
+  company          String?
+  phone            String?
+  topic            String
+  message          String
+  status           LeadStatus   @default(new)
+  assignedUserId   String?      @map("assigned_user_id")
+  internalPriority LeadPriority @default(unreviewed) @map("internal_priority")
+  followUpAt       DateTime?    @map("follow_up_at")
+  sourcePage       String?      @map("source_page")
+  ipHash           String?      @map("ip_hash")
+  consentVersion   String       @map("consent_version")
+  consentTimestamp DateTime     @map("consent_timestamp")
+  createdAt        DateTime     @default(now()) @map("created_at")
+  updatedAt        DateTime     @updatedAt @map("updated_at")
+
+  @@map("contact_submissions")
+}
+
+model LeadNote {
+  id           String   @id @default(uuid())
+  leadType     LeadType @map("lead_type")
+  leadId       String   @map("lead_id")
+  authorUserId String   @map("author_user_id")
+  note         String
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([leadType, leadId])
+  @@map("lead_notes")
+}
+
+model LeadActivity {
+  id            String   @id @default(uuid())
+  leadType      LeadType @map("lead_type")
+  leadId        String   @map("lead_id")
+  actorUserId   String?  @map("actor_user_id")
+  activityType  String   @map("activity_type")
+  previousValue String?  @map("previous_value")
+  newValue      String?  @map("new_value")
+  metadata      Json?
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@index([leadType, leadId])
+  @@map("lead_activity")
+}
+
+model AdminProfile {
+  userId      String    @id @map("user_id")
+  displayName String    @map("display_name")
+  role        AdminRole
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("admin_profiles")
+}
+
+model ExportLog {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  exportType String   @map("export_type")
+  filters    Json?
+  rowCount   Int      @map("row_count")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("export_logs")
+}

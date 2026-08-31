@@ -7,7 +7,7 @@ import { isValidEmail } from "@/lib/utils";
 
 export function ContactForm() {
   const { onSubmit, submitting, error } = useFormSubmit({
-    endpoint: "/api/contact",
+    endpoint: "contact",
     validate: (data) => {
       if (!String(data.name ?? "").trim()) return "Please enter your name.";
       if (!isValidEmail(String(data.email ?? ""))) return "Please enter a valid email address.";

@@ -4,6 +4,7 @@ import { Inter_Tight, Poppins } from "next/font/google";
 import { BootScreen } from "@/components/layout/BootScreen";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { AttributionCapture } from "@/components/layout/AttributionCapture";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { site } from "@/lib/site";
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
 
         <SmoothScroll />
+        <AttributionCapture />
 
         <BootScreen />
 

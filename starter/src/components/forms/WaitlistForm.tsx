@@ -18,7 +18,7 @@ type WaitlistFormProps = {
 
 export function WaitlistForm({ compact = false, variant = "default" }: WaitlistFormProps) {
   const { onSubmit, submitting, error } = useFormSubmit({
-    endpoint: "/api/waitlist",
+    endpoint: "waitlist",
     validate: (data) => {
       if (!String(data.firstName ?? "").trim()) return "Please enter your first name.";
       if (!isValidEmail(String(data.email ?? ""))) return "Please enter a valid email address.";
